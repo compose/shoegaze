@@ -31,7 +31,7 @@ module Shoegaze
     end
 
     def execute_scenario(scenario)
-      data = @_mock_class.instance_exec(*@_args, &scenario.to_proc)
+      data = self.instance_exec(*@_args, &scenario.to_proc)
 
       represent(data, scenario)
     end
