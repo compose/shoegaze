@@ -1,13 +1,15 @@
 module Shoegaze
   class ScenarioMock
-    extend ProxyInterface
+    include Proxy::Interface
 
     class << self
-      def implementations
-        return @implementations if @implementations
-
-        @_mock_class = self
+      def mock(_nothing = nil)
+        @_mock_class = double
+        @mock_class_double = double
+        @mock_instance_double = double
         @implementations = {class: {}, instance: {}}
+
+        proxy
       end
     end
   end
