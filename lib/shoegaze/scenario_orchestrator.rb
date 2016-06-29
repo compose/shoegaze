@@ -2,12 +2,10 @@ module Shoegaze
   class ScenarioOrchestrator
     include RSpec::Mocks::ExampleMethods
 
-    class NoImplementationError < StandardError; end
-
     def initialize(mock_class, scope, method_name)
-      @_scope       = scope
-      @_mock_class  = mock_class
-      @_method_name = method_name
+      @_scope           = scope
+      @_mock_class      = mock_class
+      @_method_name     = method_name
     end
 
     def with(*args)
@@ -36,6 +34,12 @@ module Shoegaze
       represent(data, scenario)
     end
 
+    # can we use delegate for this?
+    def implement(method_name, &block)
+      implementation_proxy.implement_class_method(method_name, &block)
+      implementation_proxy
+    end
+
     private
 
     def allowance
@@ -55,6 +59,10 @@ module Shoegaze
       return representer unless scenario.represent_method
 
       representer.send(scenario.represent_method)
+    end
+
+    def implementation_proxy
+      @_proxy_interface ||= Class.new(ScenarioMock)
     end
   end
 end

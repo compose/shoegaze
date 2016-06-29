@@ -1,12 +1,12 @@
 module Shoegaze
-  class Mock
+  class ScenarioMock
     extend ProxyInterface
 
-    class InvalidNamespaceError < StandardError; end
-
     class << self
-      def mock(class_name)
-        @_class_name = class_name
+      def implementations
+        return @implementations if @implementations
+
+        @_mock_class = self
         @implementations = {class: {}, instance: {}}
       end
     end

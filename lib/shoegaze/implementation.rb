@@ -21,8 +21,8 @@ module Shoegaze
       scenario_orchestrator = ScenarioOrchestrator.new(@_mock_class, @_scope, @_method_name)
 
       @_mock_class.send(
-        defining_method, @_method_name, proc do
-          scenario_orchestrator.execute_scenario(scenario)
+        defining_method, @_method_name, proc do |*args|
+          scenario_orchestrator.with(*args).execute_scenario(scenario)
         end
       )
     end
