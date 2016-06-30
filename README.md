@@ -89,7 +89,7 @@ end
 RSpec.configure do |config|
   config.before :each do
     # swap out the twitter client for the mock in all tests
-    stub_const("Twitter::Client", FakeTwitterClient)
+    stub_const("Twitter::Client", FakeTwitterClient.proxy)
   end
 end
 
