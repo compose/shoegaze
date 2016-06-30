@@ -1,8 +1,7 @@
+# provides the top-level mocking interface from which our mocks will inherit
 module Shoegaze
   class Mock
     include Proxy::Interface
-
-    class InvalidNamespaceError < StandardError; end
 
     class << self
       def mock(class_name)

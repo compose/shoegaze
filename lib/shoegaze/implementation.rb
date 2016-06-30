@@ -3,11 +3,11 @@ module Shoegaze
     attr_reader :scenarios
 
     def initialize(mock_class, mock_double, scope, method_name, &block)
-      @_mock_class   = mock_class
-      @_mock_double  = mock_double
-      @_scope        = scope
-      @_method_name  = method_name
-      @scenarios     = {}
+      @_mock_class  = mock_class
+      @_mock_double = mock_double
+      @_scope       = scope
+      @_method_name = method_name
+      @scenarios    = {}
 
       self.instance_eval(&block)
     end
@@ -19,7 +19,7 @@ module Shoegaze
     def default(&block)
       @scenarios[:default] = scenario = Scenario.new(@_method_name, &block)
 
-      scenario_orchestrator = ScenarioOrchestrator.new(@_mock_class, @_mock_double, @_scope, @_method_name)
+      scenario_orchestrator = Scenario::Orchestrator.new(@_mock_class, @_mock_double, @_scope, @_method_name)
 
       @_mock_double.send(
         defining_method, @_method_name, proc do |*args|

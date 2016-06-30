@@ -1,3 +1,5 @@
+# a common interface module for defining mock implementations, scenarios, and driving the
+# implementations/scenarios from the test interface
 module Shoegaze
   module Proxy
     module Interface
@@ -23,11 +25,11 @@ module Shoegaze
         alias_method :implement, :implement_instance_method
 
         def instance_call(method_name)
-          ScenarioOrchestrator.new(self, @mock_instance_double, :instance, method_name)
+          Scenario::Orchestrator.new(self, @mock_instance_double, :instance, method_name)
         end
 
         def class_call(method_name)
-          ScenarioOrchestrator.new(self, @mock_class_double, :class, method_name)
+          Scenario::Orchestrator.new(self, @mock_class_double, :class, method_name)
         end
 
         alias_method :calling, :instance_call

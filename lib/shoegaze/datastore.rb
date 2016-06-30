@@ -1,5 +1,6 @@
 module Shoegaze
   module Datastore
+    # defines both a TopModel-inherited class and a factory in the mock namespace
     def datastore(name, &block)
       klass = create_datastore_class(name)
 

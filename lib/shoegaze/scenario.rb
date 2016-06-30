@@ -1,3 +1,6 @@
+require_relative 'scenario/mock'
+require_relative 'scenario/orchestrator'
+
 module Shoegaze
   class Scenario
     def initialize(method_name, &block)
