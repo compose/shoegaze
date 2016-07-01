@@ -25,4 +25,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_girl"
   s.add_development_dependency "activemodel-serializers-xml"
   s.add_development_dependency "topmodel"
+  s.add_development_dependency "representable"
+  s.add_development_dependency "multi_json"
 end
