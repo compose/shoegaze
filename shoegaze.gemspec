@@ -21,5 +21,6 @@ Gem::Specification.new do |s|
   end
 
   s.add_development_dependency "rspec"
+  s.add_development_dependency "active_support"
   s.add_development_dependency "factory_girl"
 end
