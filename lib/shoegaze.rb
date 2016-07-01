@@ -3,6 +3,7 @@ end
 
 require 'active_support'
 require 'rspec'
+require 'activemodel-serializers-xml'
 require 'top_model'
 
 require_relative 'shoegaze/datastore'

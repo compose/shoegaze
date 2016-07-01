@@ -1,0 +1,58 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (5.0.0)
+      activesupport (= 5.0.0)
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
+    activerecord (5.0.0)
+      activemodel (= 5.0.0)
+      activesupport (= 5.0.0)
+      arel (~> 7.0)
+    activesupport (5.0.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    arel (7.0.0)
+    builder (3.2.2)
+    concurrent-ruby (1.0.2)
+    diff-lcs (1.2.5)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    i18n (0.7.0)
+    minitest (5.9.0)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    thread_safe (0.3.5)
+    topmodel (0.2.2)
+      activemodel (>= 3.0.0)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activemodel-serializers-xml
+  activesupport
+  factory_girl
+  rspec
+  topmodel
+
+BUNDLED WITH
+   1.11.2
