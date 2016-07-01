@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Shoegaze::Datastore do
+  include SpecHelpers
+
   before :all do
-    # generate a dynamic named class to avoid test suite conflicts
-    @class_name = "TestClass#{SecureRandom.hex(8)}"
-    eval("class #{@class_name}; extend Shoegaze::Datastore; end")
-    @klass = @class_name.constantize
+    @klass = random_named_class
+    @klass.extend(Shoegaze::Datastore)
 
     @klass.datastore("Pony") do
       id 123
