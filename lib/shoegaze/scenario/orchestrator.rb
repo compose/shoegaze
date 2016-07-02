@@ -18,7 +18,12 @@ module Shoegaze
       end
 
       def yields(scenario_name)
-        scenario = @_mock_class.implementations[@_scope][@_method_name].scenarios[scenario_name]
+        implementation = @_mock_class.implementations[@_scope][@_method_name]
+
+        scenario = begin
+                     implementation.scenarios[scenario_name]
+                   rescue NoMethodError
+                   end
 
         unless scenario
           raise NoImplementationError.new(
