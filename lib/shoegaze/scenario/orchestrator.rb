@@ -6,10 +6,10 @@ module Shoegaze
       class NoImplementationError < StandardError; end
 
       def initialize(mock_class, mock_double, scope, method_name)
-        @_scope           = scope
-        @_mock_class      = mock_class
-        @_mock_double     = mock_double
-        @_method_name     = method_name
+        @_scope       = scope
+        @_mock_class  = mock_class
+        @_mock_double = mock_double
+        @_method_name = method_name
       end
 
       def with(*args)
@@ -43,8 +43,8 @@ module Shoegaze
       # basically all implementations from here on are chained and will be class method
       # calls
       def implement(method_name, &block)
-        implementation_proxy.implement_class_method(method_name, &block)
-        implementation_proxy.proxy
+        proxy_interface.implement_class_method(method_name, &block)
+        proxy_interface.proxy
       end
 
       private
@@ -69,7 +69,7 @@ module Shoegaze
 
       # creates a new mocking context for the nested method call
       # see Shoegaze::Scenario::Mock
-      def implementation_proxy
+      def proxy_interface
         return @_proxy_interface if @_proxy_interface
 
         @_proxy_interface = Class.new(Scenario::Mock)
