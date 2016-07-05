@@ -1,7 +1,8 @@
 require 'spec_helper'
-require 'pry'
 
 describe Shoegaze::Scenario::Orchestrator do
+  include SpecHelpers
+
   let!(:scope){ :instance }
   let!(:mock_class){ double }
   let!(:mock_double){ double }
@@ -27,13 +28,22 @@ describe Shoegaze::Scenario::Orchestrator do
   end
 
   describe "#yields" do
-    let!(:mock_double){ Class.new }
+    let!(:test_class){
+      random_named_class do
+        def self.techno_viking(arg1, arg2)
+        end
+
+        def techno_viking(arg1, arg2)
+        end
+      end
+    }
     let!(:args){ [:one, :two] }
     let!(:scenario_name){ :invisible_pickles }
     let!(:fake_scenario){ double }
     let!(:fake_implementation){ double(scenarios: {invisible_pickles: fake_scenario}) }
 
     describe "for an instance" do
+      let!(:mock_double){ instance_double(test_class.name) }
       let!(:scenario_orchestrator){ Shoegaze::Scenario::Orchestrator.new(mock_class, mock_double, :instance, method_name) }
 
       describe "with a scenario" do
@@ -47,15 +57,16 @@ describe Shoegaze::Scenario::Orchestrator do
           scenario_orchestrator.with(*args).yields(scenario_name)
 
           expect(scenario_orchestrator).to receive(:execute_scenario).with(fake_scenario)
-          mock_double.new.send(:techno_viking, *args)
+          mock_double.send(:techno_viking, *args)
 
           expect{
-            mock_double.new.send(:techno_viking, :wrong_args)
+            mock_double.send(:techno_viking, :wrong, :args)
           }.to raise_exception RSpec::Mocks::MockExpectationError
         end
       end
 
       describe "for a class" do
+        let!(:mock_double){ class_double(test_class.name) }
         let!(:scenario_orchestrator){ Shoegaze::Scenario::Orchestrator.new(mock_class, mock_double, :class, method_name) }
 
         describe "with a scenario" do
@@ -72,7 +83,7 @@ describe Shoegaze::Scenario::Orchestrator do
             mock_double.send(:techno_viking, *args)
 
             expect{
-              mock_double.send(:techno_viking, :wrong_args)
+              mock_double.send(:techno_viking, :wrong, :args)
             }.to raise_exception RSpec::Mocks::MockExpectationError
           end
         end

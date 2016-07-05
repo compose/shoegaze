@@ -36,7 +36,7 @@ module Shoegaze
         # yeah, we are abusing re-use of rspec doubles
         @_mock_double.instance_variable_set(:@__expired, false)
 
-        send(allowance, @_mock_double).to receive(@_method_name).with(*args) do
+        send(:allow, @_mock_double).to receive(@_method_name).with(*args) do
           execute_scenario(scenario)
         end
       end
