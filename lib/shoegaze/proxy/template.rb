@@ -1,7 +1,7 @@
-# provides the basic 'template' for our anonymous proxy classes whose *only purpose* is to
-# delegate implementation method calls to the class and instance doubles
 module Shoegaze
   module Proxy
+    # Provides the basic 'template' for our anonymous proxy classes whose *only purpose* is to
+    # delegate implementation method calls to the class and instance doubles.
     class Template
       class << self
         attr_accessor :class_double

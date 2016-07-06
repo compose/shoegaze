@@ -4,14 +4,14 @@ describe Shoegaze::Proxy::Template do
   let!(:instance_double) do
     mock_double = double
 
-    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    Shoegaze::Mock.send(:extend_double_with_extra_methods, mock_double)
     mock_double
   end
 
   let!(:class_double) do
     mock_double = double
 
-    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    Shoegaze::Mock.send(:extend_double_with_extra_methods, mock_double)
     mock_double
   end
 

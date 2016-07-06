@@ -9,7 +9,7 @@ describe Shoegaze::Implementation do
   let!(:mock_double) do
     mock_double = double
 
-    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    Shoegaze::Mock.send(:extend_double_with_extra_methods, mock_double)
     mock_double
   end
 

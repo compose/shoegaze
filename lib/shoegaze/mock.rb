@@ -1,9 +1,14 @@
-# provides the top-level mocking interface from which our mocks will inherit
 module Shoegaze
+  # Provides the top-level mocking interface from which our mocks will inherit.
   class Mock
     include Proxy::Interface
 
     class << self
+      # Creates a Shoegaze mock proxy for the provided class name
+      #
+      # @param class_name [String] String name of the constant to mock
+      # @return [Class.new(Shoegaze::Proxy)] The created Shoegaze proxy. Use this as the replacement for your real implementation.
+      #
       def mock(class_name)
         @mock_class_double = class_double(class_name)
         @mock_instance_double = instance_double(class_name)

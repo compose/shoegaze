@@ -12,10 +12,21 @@ module Shoegaze
       self.instance_eval(&block)
     end
 
+    # Defines a named scenario for the implementation
+    #
+    # @param name [Symbol] name of the scenario
+    # @param block [Block] Shoegaze::Scenario implementation expressed in a block
+    # @return [Scenario] the created scenario
+    #
     def scenario(scenario_name, &block)
       @scenarios[scenario_name] = Scenario.new(@_method_name, &block)
     end
 
+    # Defines the default scenario for the implementation
+    #
+    # @param block [Block] Shoegaze::Scenario implementation expressed in a block
+    # @return [Scenario] the created scenario
+    #
     def default(&block)
       @scenarios[:default] = scenario = Scenario.new(@_method_name, &block)
 
@@ -26,6 +37,8 @@ module Shoegaze
       @_mock_double.add_default_scenario(@_method_name, proc do |*args|
         scenario_orchestrator.with(*args).execute_scenario(scenario)
       end)
+
+      scenario
     end
 
     private

@@ -12,11 +12,22 @@ module Shoegaze
         @_method_name = method_name
       end
 
+      # Specifies the arguments to which this scenario will be scoped.
+      #
+      # @param args [*Arguments] any number of free-form arguments
+      # @return [Shoegaze::Scenario::Orchestrator] returns the orchestrator `self` for chainability
+      #
       def with(*args)
         @_args = args
         self
       end
 
+      # Specifies the scenario for the implementation that will be triggered when this method is
+      # called with the specified scope (arguments, etc).
+      #
+      # @param scenario_name [Symbol] The name of the scenario to trigger.
+      # @return [Shoegaze::Scenario::Orchestrator] returns the orchestrator `self` for chainability
+      #
       def yields(scenario_name)
         implementation = @_mock_class.implementations[@_scope][@_method_name]
 
@@ -39,17 +50,57 @@ module Shoegaze
         send(:allow, @_mock_double).to receive(@_method_name).with(*args) do
           execute_scenario(scenario)
         end
+
+        self
       end
 
+      # Executes the specified implementation scenario.
+      #
+      # @param scenario_name [Symbol] The name of the scenario to run.
+      # @return [Misc] returns the represented result of the scenario
+      #
       def execute_scenario(scenario)
         data = self.instance_exec(*@_args, &scenario.to_proc)
 
         represent(data, scenario)
       end
 
-      # TODO: can we use delegate and alias for this?
-      # basically all implementations from here on are chained and will be class method
-      # calls
+      # Specifies a sub-implementation proxy interface used for recursive chaining of
+      # implementations. Think of it as a recursable Shoegaze::Mock.implement_class_method.
+      # All sub-implementations are internally implemented as class methods for simplicity.
+      #
+      # @param method_name [Symbol] The name of the nested method to implement
+      # @return [Class.new(Shoegaze::Proxy)] A Shoegaze proxy for next layer of the implementation.
+      #
+      # example:
+      #
+      #   class Fake < Shoegaze::Mock
+      #     mock Real
+      #
+      #     implement :accounts do # top-level Shoegaze::Mock interface
+      #       scenario :success do
+      #         datasource do
+      #           implement :create do # _this method_
+      #             default do
+      #               datasource do
+      #                 implement :even_more_things # _this method again_
+      #                   default do
+      #                     datasource do |params|
+      #                       :popcorn
+      #                     end
+      #                   end
+      #                 end
+      #               end
+      #             end
+      #           end
+      #         end
+      #       end
+      #     end
+      #   end
+      #
+      #   $ Fake.accounts.create.even_more_things
+      #   :popcorn
+      #
       def implement(method_name, &block)
         proxy_interface.implement_class_method(method_name, &block)
         proxy_interface.proxy

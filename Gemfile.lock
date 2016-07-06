@@ -63,7 +63,6 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel-serializers-xml
-  activesupport
   factory_girl
   multi_json
   pry

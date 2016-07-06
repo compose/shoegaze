@@ -85,16 +85,4 @@ describe Shoegaze::Proxy::Interface do
       expect(test_class.proxy).to eq(fake_proxy)
     end
   end
-
-  describe "#extend_double_with_extra_methods" do
-    let!(:test_double){ double }
-
-    it "adds add_default_scenario and default_scenario methods" do
-      test_class.extend_double_with_extra_methods(test_double)
-      fake_implementation = test_double
-
-      test_double.add_default_scenario(:foo, fake_implementation)
-      expect(test_double.default_scenario(:foo)).to eq(fake_implementation)
-    end
-  end
 end

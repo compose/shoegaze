@@ -1,6 +1,11 @@
 module Shoegaze
   module Datastore
-    # defines both a TopModel-inherited class and a factory in the mock namespace
+    # Defines both a TopModel-inherited class and a factory in the mock namespace
+    #
+    # @param name [Symbol] upcased name of the datastore to create (example: :User)
+    # @param block [Block] FactoryGirl factory implementation expressed in a block
+    # @return [Class] the created datastore class
+    #
     def datastore(name, &block)
       klass = create_datastore_class(name)
 
@@ -9,6 +14,8 @@ module Shoegaze
           self.instance_eval(&block)
         end
       end
+
+      klass
     end
 
     private

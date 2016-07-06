@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   end
 
   s.add_development_dependency "rspec"
-  s.add_development_dependency "activesupport"
   s.add_development_dependency "factory_girl"
   s.add_development_dependency "activemodel-serializers-xml"
   s.add_development_dependency "topmodel"
