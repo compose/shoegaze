@@ -4,6 +4,8 @@
 
 Create mocks of modules (especially clients) with easily-defined scenarios (success, invalid, etc) and an optional in-memory persistence layer.
 
+[Documentation](http://www.rubydoc.info/github/compose/shoegaze/master)
+
 ## The problem
 
 When unit testing, libraries that constitute dependencies become cumbersome to stub as complexity increases. Most of the time you want to simulate various high-level scenarios that can be produced in your library. Stubbing those high-level scenarios in your tests with low-level tools can be cumbersome and requires a lot of logic about your dependencies to be sprinked throughout your tests. Outright mocking the libraries in various ways (Webmock, VCR, DIY fake classes) can be tricky.
