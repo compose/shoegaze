@@ -62,6 +62,22 @@ class FakeTwitterClient < Shoegaze::Mock
       end
     end
   end
+
+  # you can mock chained methods by nesting implementations, too
+  #
+  # example: ProductMaker.accounts.create({name: "Jack Dorsey"})
+  implement :accounts do
+    scenario :success do
+      datasource do
+        implement :create do
+          # default scenarios can be specified
+          default do |params|
+            FactoryGirl.create(Account, params)
+          end
+        end
+      end
+    end
+  end
 end
 
 ```
