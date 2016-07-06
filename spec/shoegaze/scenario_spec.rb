@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe Shoegaze::Scenario do
   let!(:method_name){ :one_weird_trick }

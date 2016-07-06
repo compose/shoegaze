@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'pry'
+
 class InstanceDefaultScenario
   def basic_instance_method(arg1, arg2)
     raise "should never see this"
