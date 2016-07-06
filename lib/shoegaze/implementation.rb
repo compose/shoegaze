@@ -21,6 +21,8 @@ module Shoegaze
 
       scenario_orchestrator = Scenario::Orchestrator.new(@_mock_class, @_mock_double, @_scope, @_method_name)
 
+      # NOTE: we can't use RSpec mock methods here because :default is called outside of a
+      # test scope. so we have added some :default_scenario* methods instead
       @_mock_double.add_default_scenario(@_method_name, proc do |*args|
         scenario_orchestrator.with(*args).execute_scenario(scenario)
       end)
