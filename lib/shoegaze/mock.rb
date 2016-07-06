@@ -9,6 +9,15 @@ module Shoegaze
       # @param class_name [String] String name of the constant to mock
       # @return [Class.new(Shoegaze::Proxy)] The created Shoegaze proxy. Use this as the replacement for your real implementation.
       #
+      # example:
+      #
+      #   class RealClass
+      #   end
+      #
+      #   class FakeClass < Shoegaze::Mock
+      #     mock RealClass
+      #   end
+      #
       def mock(class_name)
         @mock_class_double = class_double(class_name)
         @mock_instance_double = instance_double(class_name)

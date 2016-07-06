@@ -6,6 +6,13 @@ module Shoegaze
     # @param block [Block] FactoryGirl factory implementation expressed in a block
     # @return [Class] the created datastore class
     #
+    # example:
+    #
+    #   datastore :User do
+    #     id 123
+    #     name "Karlita"
+    #   end
+    #
     def datastore(name, &block)
       klass = create_datastore_class(name)
 

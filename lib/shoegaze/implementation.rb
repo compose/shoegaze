@@ -18,6 +18,14 @@ module Shoegaze
     # @param block [Block] Shoegaze::Scenario implementation expressed in a block
     # @return [Scenario] the created scenario
     #
+    # example:
+    #
+    #   scenario :success do
+    #     datasource do
+    #       # ...
+    #     end
+    #   end
+    #
     def scenario(scenario_name, &block)
       @scenarios[scenario_name] = Scenario.new(@_method_name, &block)
     end
@@ -26,6 +34,14 @@ module Shoegaze
     #
     # @param block [Block] Shoegaze::Scenario implementation expressed in a block
     # @return [Scenario] the created scenario
+    #
+    # example:
+    #
+    #   default do
+    #     datasource do
+    #       # ...
+    #     end
+    #   end
     #
     def default(&block)
       @scenarios[:default] = scenario = Scenario.new(@_method_name, &block)

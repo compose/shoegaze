@@ -17,6 +17,10 @@ module Shoegaze
       # @param args [*Arguments] any number of free-form arguments
       # @return [Shoegaze::Scenario::Orchestrator] returns the orchestrator `self` for chainability
       #
+      # example:
+      #
+      #   FakeThing.proxy.calling(:find_cows).with(123, 456).yields(:success)
+      #
       def with(*args)
         @_args = args
         self
@@ -27,6 +31,10 @@ module Shoegaze
       #
       # @param scenario_name [Symbol] The name of the scenario to trigger.
       # @return [Shoegaze::Scenario::Orchestrator] returns the orchestrator `self` for chainability
+      #
+      # example:
+      #
+      #   FakeThing.proxy.calling(:find_cows).with(123, 456).yields(:success)
       #
       def yields(scenario_name)
         implementation = @_mock_class.implementations[@_scope][@_method_name]

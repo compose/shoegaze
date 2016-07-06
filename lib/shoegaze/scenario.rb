@@ -18,6 +18,26 @@ module Shoegaze
     # @param representer_class [Representable::Decorator] (optional) A decorator class that will be used to wrap the result of the data source.
     # @param representer_block [Block] (optional) An inline Representable::Decorator implementation expressed as a block.
     # @return [Shoegaze::Orchestrator] The created or referenced representer.
+    #
+    # example:
+    #
+    #   class FakeThing < Shoegaze::Mock
+    #     mock RealThing
+    #
+    #     implement :method do
+    #       scenario :success do
+    #         representer ThingRepresenter
+    #
+    #         # or...
+    #
+    #         representer do
+    #           property :id
+    #           property :name
+    #         end
+    #       end
+    #     end
+    #   end
+    #
     def representer(representer_class = nil, &block)
       if representer_class
         @_representer = representer_class
@@ -40,6 +60,20 @@ module Shoegaze
     #
     # @param representation_method [Symbol] The method to call on the Representable::Decorator, the result of which is ultimately returned out of the implementation of this scenario.
     # @return [Symbol] The representation method
+    #
+    # example:
+    #
+    #   class FakeThing < Shoegaze::Mock
+    #     mock RealThing
+    #
+    #     implement :method do
+    #       scenario :success do
+    #         representer ThingRepresenter
+    #         represent_method :as_json
+    #       end
+    #     end
+    #   end
+    #
     def represent_method(representation_method = nil)
       if representation_method
         @_representation_method = representation_method

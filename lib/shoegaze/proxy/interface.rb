@@ -20,6 +20,25 @@ module Shoegaze
         # @param method_name [Symbol] Symbol name for the class method that is being implemented
         # @param block [Block] Shoegaze::Implementation expressed in a block
         # @return [Shoegaze::Implementation] The created implementation.
+        #
+        # example:
+        #
+        #   class FakeThing < Shoegaze::Mock
+        #     mock RealThing
+        #
+        #     implement_class_method :find_significant_other do
+        #       default do
+        #         datasource do
+        #           :ohhai
+        #         end
+        #       end
+        #     end
+        #   end
+        #
+        # example usage:
+        #
+        #   $ FakeThing.proxy.find_significant_other
+        #   :ohhai
         def implement_class_method(method_name, &block)
           implementations[:class][method_name] = Implementation.new(self, @mock_class_double, :class, method_name, &block)
         end
@@ -29,6 +48,25 @@ module Shoegaze
         # @param method_name [Symbol] Symbol name for the instance method that is being implemented
         # @param block [Block] Shoegaze::Implementation expressed in a block
         # @return [Shoegaze::Implementation] The created implementation.
+        #
+        # example:
+        #
+        #   class FakeThing < Shoegaze::Mock
+        #     mock RealThing
+        #
+        #     implement_instance_method :find_significant_other do
+        #       default do
+        #         datasource do
+        #           :ohhai
+        #         end
+        #       end
+        #     end
+        #   end
+        #
+        # example usage:
+        #
+        #   $ FakeThing.proxy.new.find_significant_other
+        #   :ohhai
         def implement_instance_method(method_name, &block)
           implementations[:instance][method_name] = Implementation.new(self, @mock_instance_double, :instance, method_name, &block)
         end
@@ -40,6 +78,27 @@ module Shoegaze
         #
         # @param method_name [Symbol] Symbol name for the class method that is being orchestrated.
         # @return [Shoegaze::Orchestrator] The created Shoegaze orchestration.
+        #
+        # example:
+        #
+        #   class FakeThing < Shoegaze::Mock
+        #     mock RealThing
+        #
+        #     implement_instance_method :find_significant_other do
+        #       scenario :success do
+        #         datasource do
+        #           :ohhai
+        #         end
+        #       end
+        #     end
+        #   end
+        #
+        # example usage:
+        #
+        #   $ FakeThing.proxy.class_call(:find_significant_other).with(:wow).yields(:success)
+        #   $ FakeThing.proxy.find_significant_other(:wow)
+        #   :ohhai
+        #
         def class_call(method_name)
           Scenario::Orchestrator.new(self, @mock_class_double, :class, method_name)
         end
@@ -49,6 +108,27 @@ module Shoegaze
         #
         # @param method_name [Symbol] Symbol name for the instance method that is being orchestrated.
         # @return [Shoegaze::Orchestrator] The created Shoegaze orchestration.
+        #
+        # example:
+        #
+        #   class FakeThing < Shoegaze::Mock
+        #     mock RealThing
+        #
+        #     implement_instance_method :find_significant_other do
+        #       scenario :success do
+        #         datasource do
+        #           :ohhai
+        #         end
+        #       end
+        #     end
+        #   end
+        #
+        # example usage:
+        #
+        #   $ FakeThing.proxy.instance_call(:find_significant_other).with(:wow).yields(:success)
+        #   $ FakeThing.proxy.new.find_significant_other(:wow)
+        #   :ohhai
+        #
         def instance_call(method_name)
           Scenario::Orchestrator.new(self, @mock_instance_double, :instance, method_name)
         end
