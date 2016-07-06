@@ -1,8 +1,19 @@
 require 'spec_helper'
 
 describe Shoegaze::Proxy::Template do
-  let!(:class_double){ double }
-  let!(:instance_double){ double }
+  let!(:instance_double) do
+    mock_double = double
+
+    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    mock_double
+  end
+
+  let!(:class_double) do
+    mock_double = double
+
+    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    mock_double
+  end
 
   before :each do
     Shoegaze::Proxy::Template.class_double = class_double

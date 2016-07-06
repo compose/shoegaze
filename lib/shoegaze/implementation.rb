@@ -21,11 +21,9 @@ module Shoegaze
 
       scenario_orchestrator = Scenario::Orchestrator.new(@_mock_class, @_mock_double, @_scope, @_method_name)
 
-      @_mock_double.send(
-        defining_method, @_method_name, proc do |*args|
-          scenario_orchestrator.with(*args).execute_scenario(scenario)
-        end
-      )
+      @_mock_double.add_default_scenario(@_method_name, proc do |*args|
+        scenario_orchestrator.with(*args).execute_scenario(scenario)
+      end)
     end
 
     private

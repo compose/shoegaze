@@ -37,6 +37,24 @@ module Shoegaze
         def proxy
           @proxy ||= Shoegaze::Proxy.new(@mock_class_double, @mock_instance_double)
         end
+
+        # rspec doubles don't let us use them outside of tests, which is pretty annoying
+        # because the 'default' scenario method needs to set up a scenario outside of the
+        # testing scope. combine that with how rspec also overrides respond_to? and you
+        # end up with a lovely hack like this
+        def extend_double_with_extra_methods(double)
+          double.instance_eval do
+            @default_scenarios = {}
+
+            def add_default_scenario(method_name, implementation)
+              @default_scenarios[method_name] = implementation
+            end
+
+            def default_scenario(method_name)
+              @default_scenarios[method_name]
+            end
+          end
+        end
       end
     end
   end

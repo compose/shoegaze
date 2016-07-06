@@ -37,6 +37,10 @@ module Shoegaze
           @_mock_class = double
           @mock_class_double = double
           @mock_instance_double = double
+
+          extend_double_with_extra_methods(@mock_instance_double)
+          extend_double_with_extra_methods(@mock_class_double)
+
           @implementations = {class: {}, instance: {}}
 
           proxy

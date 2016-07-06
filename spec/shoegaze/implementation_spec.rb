@@ -5,7 +5,14 @@ describe Shoegaze::Implementation do
 
   let!(:subject){ Shoegaze::Implementation }
   let!(:mock_class){ double }
-  let!(:mock_double){ double }
+
+  let!(:mock_double) do
+    mock_double = double
+
+    Shoegaze::Mock.extend_double_with_extra_methods(mock_double)
+    mock_double
+  end
+
   let!(:scope){ :instance }
   let!(:method_name){ :bicycle }
   let!(:implementation){ subject.new(mock_class, mock_double, scope, method_name){} }
@@ -75,7 +82,7 @@ describe Shoegaze::Implementation do
 
     describe "with an :instance scope" do
       it "creates a named method that ultimately triggers :execute_scenario on a Scenario::Orchestrator" do
-        expect_default_scenario_to_be_defined_for_scope(scope, :define_method)
+        expect_default_scenario_to_be_defined_for_scope(scope)
       end
     end
 
@@ -83,7 +90,7 @@ describe Shoegaze::Implementation do
       let!(:scope){ :class }
 
       it "creates a named singleton method that ultimately triggers :execute_scenario on a Scenario::Orchestrator" do
-        expect_default_scenario_to_be_defined_for_scope(scope, :define_singleton_method)
+        expect_default_scenario_to_be_defined_for_scope(scope)
       end
     end
   end

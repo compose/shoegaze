@@ -7,6 +7,10 @@ module Shoegaze
       def mock(class_name)
         @mock_class_double = class_double(class_name)
         @mock_instance_double = instance_double(class_name)
+
+        extend_double_with_extra_methods(@mock_instance_double)
+        extend_double_with_extra_methods(@mock_class_double)
+
         @implementations = {class: {}, instance: {}}
 
         proxy
