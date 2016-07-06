@@ -1,5 +1,7 @@
 # Shoegaze
 
+[![Build status](https://badge.buildkite.com/0d63e248d5ce1503e1cc1d4e928cc43ff48a9db53463ecdb32.svg)](https://buildkite.com/compose/shoegaze)
+
 Create mocks of modules (especially clients) with easily-defined scenarios (success, invalid, etc) and an optional in-memory persistence layer.
 
 ## The problem
