@@ -20,10 +20,9 @@ Gem::Specification.new do |s|
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "factory_girl"
-  s.add_development_dependency "activemodel-serializers-xml"
-  s.add_development_dependency "topmodel"
-  s.add_development_dependency "representable"
-  s.add_development_dependency "multi_json"
+  s.add_dependency "rspec"
+  s.add_dependency "factory_girl"
+  s.add_dependency "topmodel"
+  s.add_dependency "representable"
+  s.add_dependency "multi_json"
 end

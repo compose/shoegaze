@@ -3,7 +3,6 @@ end
 
 require 'active_support'
 require 'rspec'
-require 'activemodel-serializers-xml'
 require 'top_model'
 require 'representable'
 require 'multi_json'

@@ -1,31 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (5.0.0)
-      activesupport (= 5.0.0)
-    activemodel-serializers-xml (1.0.1)
-      activemodel (> 5.x)
-      activerecord (> 5.x)
-      activesupport (> 5.x)
+    activemodel (4.2.6)
+      activesupport (= 4.2.6)
       builder (~> 3.1)
-    activerecord (5.0.0)
-      activemodel (= 5.0.0)
-      activesupport (= 5.0.0)
-      arel (~> 7.0)
-    activesupport (5.0.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+    activesupport (4.2.6)
       i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (7.0.0)
     builder (3.2.2)
-    concurrent-ruby (1.0.2)
     declarative (0.0.7)
       uber (>= 0.0.15)
     diff-lcs (1.2.5)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     i18n (0.7.0)
+    json (1.8.3)
     minitest (5.9.0)
     multi_json (1.12.1)
     representable (3.0.0)
@@ -55,7 +47,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel-serializers-xml
+  activemodel (~> 4.2.6)
   factory_girl
   multi_json
   representable
