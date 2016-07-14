@@ -16,7 +16,17 @@ module Shoegaze
           return class_double.send(method, *args) if class_double.respond_to?(method)
           return default_scenario.call(*args) if default_scenario
 
-          super
+          begin
+            super
+          rescue NoMethodError
+            raise_no_implementation_error(method, class_double)
+          end
+        end
+
+        private
+
+        def raise_no_implementation_error(method, double)
+          raise Shoegaze::Scenario::Orchestrator::NoImplementationError.new("#{self.name} either has no Shoegaze mock implementation or no scenario has been orchestrated for method :#{method}")
         end
       end
 
@@ -31,7 +41,11 @@ module Shoegaze
         return double.send(method, *args) if double.respond_to?(method)
         return default_scenario.call(*args) if default_scenario
 
-        super
+        begin
+          super
+        rescue NoMethodError
+          self.class.raise_no_implementation_error(method, double)
+        end
       end
     end
   end

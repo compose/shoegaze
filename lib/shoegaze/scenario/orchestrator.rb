@@ -50,10 +50,19 @@ module Shoegaze
                 )
         end
 
-        args = @_args || [anything]
-
         # yeah, we are abusing re-use of rspec doubles
         @_mock_double.instance_variable_set(:@__expired, false)
+
+        args = @_args
+
+        if @_args.nil?
+          args = [anything]
+
+          # also allow no args if no args are specified
+          send(:allow, @_mock_double).to receive(@_method_name) do
+            execute_scenario(scenario)
+          end
+        end
 
         send(:allow, @_mock_double).to receive(@_method_name).with(*args) do
           execute_scenario(scenario)
