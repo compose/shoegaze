@@ -3,6 +3,7 @@ end
 
 require 'active_support'
 require 'rspec'
+require 'factory_girl'
 require 'top_model'
 require 'representable'
 require 'multi_json'
