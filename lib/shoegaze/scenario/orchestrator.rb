@@ -92,7 +92,7 @@ module Shoegaze
       # example:
       #
       #   class Fake < Shoegaze::Mock
-      #     mock Real
+      #     mock "Real"
       #
       #     implement :accounts do # top-level Shoegaze::Mock interface
       #       scenario :success do

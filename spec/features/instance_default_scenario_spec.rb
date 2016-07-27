@@ -7,7 +7,7 @@ class InstanceDefaultScenario
 end
 
 class FakeInstanceDefaultScenario < Shoegaze::Mock
-  mock InstanceDefaultScenario
+  mock "InstanceDefaultScenario"
 
   implement_instance_method :basic_instance_method do
     default do

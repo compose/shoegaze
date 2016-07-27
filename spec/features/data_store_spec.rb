@@ -27,7 +27,7 @@ end
 class FakeDataStoreMethod < Shoegaze::Mock
   extend Shoegaze::Datastore
 
-  mock DataStoreMethod
+  mock "DataStoreMethod"
 
   datastore :Sock do
     id{ (Random.rand * 100).ceil }

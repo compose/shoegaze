@@ -7,7 +7,7 @@ class BasicInstanceMethod
 end
 
 class FakeBasicInstanceMethod < Shoegaze::Mock
-  mock BasicInstanceMethod
+  mock "BasicInstanceMethod"
 
   implement_instance_method :basic_instance_method do
     scenario :good do

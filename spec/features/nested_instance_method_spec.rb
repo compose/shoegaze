@@ -13,7 +13,7 @@ class NestedInstanceMethod
 end
 
 class FakeNestedInstanceMethod < Shoegaze::Mock
-  mock NestedInstanceMethod
+  mock "NestedInstanceMethod"
 
   implement_instance_method :nested_instance_method do
     scenario :good do

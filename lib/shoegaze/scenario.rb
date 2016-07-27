@@ -22,7 +22,7 @@ module Shoegaze
     # example:
     #
     #   class FakeThing < Shoegaze::Mock
-    #     mock RealThing
+    #     mock "RealThing"
     #
     #     implement :method do
     #       scenario :success do
@@ -64,7 +64,7 @@ module Shoegaze
     # example:
     #
     #   class FakeThing < Shoegaze::Mock
-    #     mock RealThing
+    #     mock "RealThing"
     #
     #     implement :method do
     #       scenario :success do

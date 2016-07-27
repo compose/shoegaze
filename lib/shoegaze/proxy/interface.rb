@@ -24,7 +24,7 @@ module Shoegaze
         # example:
         #
         #   class FakeThing < Shoegaze::Mock
-        #     mock RealThing
+        #     mock "RealThing"
         #
         #     implement_class_method :find_significant_other do
         #       default do
@@ -52,7 +52,7 @@ module Shoegaze
         # example:
         #
         #   class FakeThing < Shoegaze::Mock
-        #     mock RealThing
+        #     mock "RealThing"
         #
         #     implement_instance_method :find_significant_other do
         #       default do
@@ -82,7 +82,7 @@ module Shoegaze
         # example:
         #
         #   class FakeThing < Shoegaze::Mock
-        #     mock RealThing
+        #     mock "RealThing"
         #
         #     implement_instance_method :find_significant_other do
         #       scenario :success do
@@ -112,7 +112,7 @@ module Shoegaze
         # example:
         #
         #   class FakeThing < Shoegaze::Mock
-        #     mock RealThing
+        #     mock "RealThing"
         #
         #     implement_instance_method :find_significant_other do
         #       scenario :success do

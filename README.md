@@ -22,7 +22,7 @@ class FakeTwitterClient < Shoegaze::Mock
   # your mock can 'remember' its state
   extend Shoegaze::Datastore
 
-  mock Twitter::Client
+  mock "Twitter::Client"
 
   # creates both a FakeTwitterClient::Update 'model' and a FactoryGirl
   # factory for the model

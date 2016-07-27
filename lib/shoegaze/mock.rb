@@ -15,7 +15,7 @@ module Shoegaze
       #   end
       #
       #   class FakeClass < Shoegaze::Mock
-      #     mock RealClass
+      #     mock "RealClass"
       #   end
       #
       def mock(class_name)

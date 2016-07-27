@@ -9,7 +9,7 @@ class ClassDefaultScenario
 end
 
 class FakeClassDefaultScenario < Shoegaze::Mock
-  mock ClassDefaultScenario
+  mock "ClassDefaultScenario"
 
   implement_class_method :basic_class_method do
     default do

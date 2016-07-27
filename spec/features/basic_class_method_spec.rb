@@ -9,7 +9,7 @@ class BasicClassMethod
 end
 
 class FakeBasicClassMethod < Shoegaze::Mock
-  mock BasicClassMethod
+  mock "BasicClassMethod"
 
   implement_class_method :basic_class_method do
     scenario :good do
