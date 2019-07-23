@@ -30,6 +30,11 @@ module Shoegaze
         end
       end
 
+      def initialize(*args)
+        # Mock argumented initialize method.
+        # This allows shoegaze to mock class with a customized initializer.
+      end
+
       def method_missing(method, *args)
         double = self.class.instance_double
 
