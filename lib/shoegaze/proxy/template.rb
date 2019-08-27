@@ -7,14 +7,17 @@ module Shoegaze
         attr_accessor :class_double
         attr_accessor :instance_double
 
-        def method_missing(method, *args)
+        def method_missing(method, *args, &block)
           # yeah, we are abusing re-use of rspec doubles
           class_double.instance_variable_set(:@__expired, false)
 
           default_scenario = class_double.default_scenario(method)
 
-          return class_double.send(method, *args) if class_double.respond_to?(method)
-          return default_scenario.call(*args) if default_scenario
+          if class_double.respond_to?(method)
+            return class_double.send(method, *args, &block)
+          end
+
+          return default_scenario.call(*args, &block) if default_scenario
 
           begin
             super
@@ -30,7 +33,7 @@ module Shoegaze
         end
       end
 
-      def method_missing(method, *args)
+      def method_missing(method, *args, &block)
         double = self.class.instance_double
 
         # yeah, we are abusing re-use of rspec doubles
@@ -38,8 +41,8 @@ module Shoegaze
 
         default_scenario = double.default_scenario(method)
 
-        return double.send(method, *args) if double.respond_to?(method)
-        return default_scenario.call(*args) if default_scenario
+        return double.send(method, *args, &block) if double.respond_to?(method)
+        return default_scenario.call(*args, &block) if default_scenario
 
         begin
           super

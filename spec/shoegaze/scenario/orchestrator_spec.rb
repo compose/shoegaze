@@ -120,7 +120,6 @@ describe Shoegaze::Scenario::Orchestrator do
                                   proc do |*args|
                                     raise "bogus" unless args == [:one, :two]
 
-                                    whodunnit
 
                                     :some_data
                                   end
@@ -128,7 +127,6 @@ describe Shoegaze::Scenario::Orchestrator do
     end
 
     it "runs the block with the args and passes the result to #represent" do
-      expect(scenario_orchestrator).to receive(:whodunnit)
       expect(scenario_orchestrator).to receive(:represent).with(:some_data, fake_scenario)
 
       scenario_orchestrator.execute_scenario(fake_scenario)

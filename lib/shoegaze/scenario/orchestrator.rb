@@ -64,8 +64,11 @@ module Shoegaze
           end
         end
 
-        send(:allow, @_mock_double).to receive(@_method_name).with(*args) do
-          execute_scenario(scenario)
+        send(
+          :allow,
+          @_mock_double
+        ).to receive(@_method_name).with(*args) do |*args, &block|
+          execute_scenario(scenario, &block)
         end
 
         self
@@ -76,8 +79,14 @@ module Shoegaze
       # @param scenario_name [Symbol] The name of the scenario to run.
       # @return [Misc] returns the represented result of the scenario
       #
-      def execute_scenario(scenario)
-        data = self.instance_exec(*@_args, &scenario.to_proc)
+      def execute_scenario(scenario, &block)
+        # we do this crazy dance because we want scenario.to_proc to be run in the context
+        # of self (an orchestrator) in order to enable nesting, but we also want to be
+        # able to pass in a block. instance_exec would solve the context problem but
+        # doesn't enable the passing of the block while simply calling the method would
+        # allow passing the block but not changing the context.
+        self.define_singleton_method :bound_proc, &scenario.to_proc
+        data = self.bound_proc(*@_args, &block)
 
         represent(data, scenario)
       end
