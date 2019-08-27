@@ -20,7 +20,7 @@ class FakeNestedInstanceMethod < Shoegaze::Mock
       datasource do |arg1, arg2|
         implement :another_instance_method do
           default do
-            datasource do |subarg1, subarg2|
+            datasource do
               :perfect_socks
             end
           end
