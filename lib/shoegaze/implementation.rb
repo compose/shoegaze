@@ -50,8 +50,8 @@ module Shoegaze
 
       # NOTE: we can't use RSpec mock methods here because :default is called outside of a
       # test scope. so we have added some :default_scenario* methods instead
-      @_mock_double.add_default_scenario(@_method_name, proc do |*args|
-        scenario_orchestrator.with(*args).execute_scenario(scenario)
+      @_mock_double.add_default_scenario(@_method_name, proc do |*args, &datasource_block|
+        scenario_orchestrator.with(*args).execute_scenario(scenario, &datasource_block)
       end)
 
       scenario
