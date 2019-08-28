@@ -33,6 +33,12 @@ module Shoegaze
         end
       end
 
+      def initialize(*args)
+        # no-op to allow newifying instances
+        # NOTE: due to complexity, mocking of :initialize is not actually supported. drive
+        # your behaviors via other methods
+      end
+
       def method_missing(method, *args, &block)
         double = self.class.instance_double
 

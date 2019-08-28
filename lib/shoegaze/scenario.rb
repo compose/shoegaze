@@ -17,7 +17,7 @@ module Shoegaze
     #
     # @param representer_class [Representable::Decorator] (optional) A decorator class that will be used to wrap the result of the data source.
     # @param representer_block [Block] (optional) An inline Representable::Decorator implementation expressed as a block.
-    # @return [Shoegaze::Orchestrator] The created or referenced representer.
+    # @return [Representable::Decorator] The created or referenced representer.
     #
     # example:
     #

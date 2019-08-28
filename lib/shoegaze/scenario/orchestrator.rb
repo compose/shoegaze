@@ -67,7 +67,7 @@ module Shoegaze
         send(
           :allow,
           @_mock_double
-        ).to receive(@_method_name).with(*args) do |*args, &datasource_block|
+        ).to receive(@_method_name).with(*args) do |*_args, &datasource_block|
           execute_scenario(scenario, &datasource_block)
         end
 
