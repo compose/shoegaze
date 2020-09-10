@@ -1,58 +1,59 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.6)
-      activesupport (= 4.2.6)
-      builder (~> 3.1)
-    activesupport (4.2.6)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
+    activemodel (6.0.3.3)
+      activesupport (= 6.0.3.3)
+    activesupport (6.0.3.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    builder (3.2.2)
-    declarative (0.0.7)
-      uber (>= 0.0.15)
-    diff-lcs (1.2.5)
-    factory_girl (4.7.0)
-      activesupport (>= 3.0.0)
-    i18n (0.7.0)
-    json (1.8.3)
-    minitest (5.9.0)
-    multi_json (1.12.1)
-    representable (3.0.0)
-      declarative (~> 0.0.5)
-      uber (~> 0.0.15)
-    rspec (3.4.0)
-      rspec-core (~> 3.4.0)
-      rspec-expectations (~> 3.4.0)
-      rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.4)
-      rspec-support (~> 3.4.0)
-    rspec-expectations (3.4.0)
+      zeitwerk (~> 2.2, >= 2.2.2)
+    concurrent-ruby (1.1.7)
+    declarative (0.0.20)
+    declarative-option (0.1.0)
+    diff-lcs (1.4.4)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    i18n (1.8.5)
+      concurrent-ruby (~> 1.0)
+    minitest (5.14.2)
+    multi_json (1.15.0)
+    representable (3.0.4)
+      declarative (< 0.1.0)
+      declarative-option (< 0.2.0)
+      uber (< 0.2.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.2)
+      rspec-support (~> 3.9.3)
+    rspec-expectations (3.9.2)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
-    rspec-mocks (3.4.1)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
-    rspec-support (3.4.1)
-    thread_safe (0.3.5)
-    topmodel (0.2.2)
-      activemodel (>= 3.0.0)
-    tzinfo (1.2.2)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.3)
+    thread_safe (0.3.6)
+    topmodel (0.3.0)
+      activemodel (>= 4.0.0)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    uber (0.0.15)
+    uber (0.1.0)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel (~> 4.2.6)
-  factory_girl
+  activemodel (~> 6.0.3)
+  factory_bot
   multi_json
   representable
   rspec
   topmodel
 
 BUNDLED WITH
-   1.11.2
+   1.17.3
