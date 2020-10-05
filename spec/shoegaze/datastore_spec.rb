@@ -25,7 +25,7 @@ describe Shoegaze::Datastore do
 
     describe "factory" do
       let!(:model_instance) do
-        FactoryGirl.create(created_class.name.underscore, id: 5, name: "Carlos")
+        FactoryBot.create(created_class.name.underscore, id: 5, name: "Carlos")
       end
 
       it "creates persisted instances" do

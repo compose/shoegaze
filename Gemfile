@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "rspec"
-gem "factory_girl"
+gem "factory_bot"
 gem "topmodel"
 gem "representable"
 gem "multi_json"

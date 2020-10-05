@@ -2,7 +2,7 @@ module Shoegaze
 end
 
 require 'rspec'
-require 'factory_girl'
+require 'factory_bot'
 require 'top_model'
 require 'representable'
 require 'multi_json'
