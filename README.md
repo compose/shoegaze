@@ -24,7 +24,7 @@ class FakeTwitterClient < Shoegaze::Mock
 
   mock "Twitter::Client"
 
-  # creates both a FakeTwitterClient::Update 'model' and a FactoryGirl
+  # creates both a FakeTwitterClient::Update 'model' and a FactoryBot
   # factory for the model
   datastore :Update do
     id{ BSON::ObjectId.new }
@@ -56,7 +56,7 @@ class FakeTwitterClient < Shoegaze::Mock
       datasource do
         # generate an update and store it in the memory store (you can
         # grab it with FakerTwitterClient::Update.find(update.id)
-        FactoryGirl.create(Update)
+        FactoryBot.create(Update)
       end
     end
 
@@ -76,7 +76,7 @@ class FakeTwitterClient < Shoegaze::Mock
         implement :create do
           # default scenarios can be specified
           default do |params|
-            FactoryGirl.create(Account, params)
+            FactoryBot.create(Account, params)
           end
         end
       end
@@ -181,7 +181,7 @@ rather than the real argument type.
 ## Generate test data randomly and dynamically rather than use fixtures
 
 Use Faker. Generate test data in the most flexible format. Generally
-that's a ruby object with accessors produced by Factory Girl, since
+that's a ruby object with accessors produced by Factory Bot, since
 it can easily be turned into a hash, JSON, or left as-is.
 
 ## Test the immediate layer of the component you're testing

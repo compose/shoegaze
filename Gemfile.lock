@@ -1,24 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.6)
-      activesupport (= 4.2.6)
-      builder (~> 3.1)
-    activesupport (4.2.6)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
+    activemodel (6.0.3.3)
+      activesupport (= 6.0.3.3)
+    activesupport (6.0.3.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    builder (3.2.2)
+      zeitwerk (~> 2.2, >= 2.2.2)
+    concurrent-ruby (1.1.7)
     declarative (0.0.7)
       uber (>= 0.0.15)
     diff-lcs (1.2.5)
-    factory_girl (4.7.0)
-      activesupport (>= 3.0.0)
-    i18n (0.7.0)
-    json (1.8.3)
-    minitest (5.9.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    i18n (1.8.5)
+      concurrent-ruby (~> 1.0)
+    minitest (5.14.2)
     multi_json (1.12.1)
     representable (3.0.0)
       declarative (~> 0.0.5)
@@ -36,23 +35,24 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     topmodel (0.2.2)
       activemodel (>= 3.0.0)
-    tzinfo (1.2.2)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.0.15)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel (~> 4.2.6)
-  factory_girl
+  activemodel (~> 6.0)
+  factory_bot
   multi_json
   representable
   rspec
   topmodel
 
 BUNDLED WITH
-   1.11.2
+   1.17.3

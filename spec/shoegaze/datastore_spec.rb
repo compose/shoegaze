@@ -8,9 +8,9 @@ describe Shoegaze::Datastore do
     @klass.extend(Shoegaze::Datastore)
 
     @klass.datastore("Pony") do
-      id 123
-      hoofs 5
-      name "Jeff"
+      id { 123 }
+      hoofs { 5 }
+      name { "Jeff" }
     end
   end
 
@@ -19,13 +19,13 @@ describe Shoegaze::Datastore do
 
     describe "created model class" do
       it "creates a TopModel class with the specified name inside the class' namespace" do
-        expect(created_class.ancestors[1]).to eq TopModel::Base
+        expect(created_class.ancestors[1]).to eq Shoegaze::Model
       end
     end
 
     describe "factory" do
       let!(:model_instance) do
-        FactoryGirl.create(created_class.name.underscore, id: 5, name: "Carlos")
+        FactoryBot.create(created_class.name.underscore, id: 5, name: "Carlos")
       end
 
       it "creates persisted instances" do
