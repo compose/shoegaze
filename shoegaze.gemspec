@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rspec"
   s.add_dependency "factory_bot"
-  s.add_dependency "topmodel"
   s.add_dependency "representable"
   s.add_dependency "multi_json"
 end

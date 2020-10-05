@@ -1,3 +1,5 @@
+require_relative "./model"
+
 module Shoegaze
   module Datastore
     # Defines both a TopModel-inherited class and a factory in the mock namespace
@@ -28,7 +30,7 @@ module Shoegaze
     private
 
     def create_datastore_class(name)
-      self.const_set(name, Class.new(TopModel::Base))
+      self.const_set(name, Class.new(Shoegaze::Model))
     end
   end
 end

@@ -41,7 +41,7 @@ class FakeDataStoreMethod < Shoegaze::Mock
       represent_method :as_json
 
       datasource do |sock_data|
-        FactoryBot.create(Sock, sock_data)
+        FactoryBot.create("fake_data_store_method/sock", sock_data)
       end
     end
   end
