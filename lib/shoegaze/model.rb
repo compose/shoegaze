@@ -158,7 +158,7 @@ class Shoegaze::Model
     @__data.send(method_symbol, *args)
   end
 
-  def as_json
+  def as_json(_options = nil) # options not presently actually supported
     @__data.to_h.with_indifferent_access
   end
   alias :attributes :as_json
