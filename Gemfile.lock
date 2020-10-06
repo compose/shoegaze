@@ -36,8 +36,6 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     thread_safe (0.3.6)
-    topmodel (0.2.2)
-      activemodel (>= 3.0.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.0.15)
@@ -52,7 +50,6 @@ DEPENDENCIES
   multi_json
   representable
   rspec
-  topmodel
 
 BUNDLED WITH
    1.17.3
