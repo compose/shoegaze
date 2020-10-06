@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rspec",         ">= 3.4"
   s.add_dependency "factory_bot",   ">= 6.0"
-  s.add_dependency "representable", ">= 3.0"
+  s.add_dependency "representable", ">= 2.3.0"
   s.add_dependency "multi_json",    ">= 1.12"
 end
