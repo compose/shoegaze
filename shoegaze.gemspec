@@ -20,8 +20,9 @@ Gem::Specification.new do |s|
                 "Rakefile",
                 "README.md"]
 
-  s.add_dependency "rspec",         ">= 3.4"
-  s.add_dependency "factory_bot",   ">= 6.0"
-  s.add_dependency "representable", ">= 2.3.0"
-  s.add_dependency "multi_json",    ">= 1.12"
+  s.add_dependency "rspec",                 ">= 3.4"
+  s.add_dependency "factory_bot",           ">= 6.0"
+  s.add_dependency "representable",         ">= 2.3.0"
+  s.add_dependency "multi_json",            ">= 1.12"
+  s.add_dependency "recursive-open-struct", ">= 1.0.0"
 end

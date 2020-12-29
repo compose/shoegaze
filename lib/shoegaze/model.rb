@@ -130,7 +130,7 @@ class Shoegaze::Model
 
   def initialize(attrs = {})
     @id = SecureRandom.uuid
-    @__data = OpenStruct.new(attrs)
+    @__data = RecursiveOpenStruct.new(attrs)
   end
 
   def save
