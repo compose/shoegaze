@@ -1,5 +1,11 @@
 # Shoegaze
 
+## Status
+
+As of 2023-04-04 this has been archived due to Compose being End of Life and so no one is maintaining this repository. It may become publicly open-sourced and supported under [IBM Cloud](https://github.com/ibm-cloud) at some point in the future.
+
+---
+
 [![Build status](https://badge.buildkite.com/0d63e248d5ce1503e1cc1d4e928cc43ff48a9db53463ecdb32.svg)](https://buildkite.com/compose/shoegaze)
 
 Create mocks of modules (especially clients) with easily-defined scenarios (success, invalid, etc) and an optional in-memory persistence layer.
